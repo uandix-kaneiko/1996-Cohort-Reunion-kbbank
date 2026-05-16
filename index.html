@@ -5,45 +5,19 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@300;400;600;700;900&family=Noto+Sans+KR:wght@300;400;500;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap');
-:root{--gold:#C9A84C;--gold-bright:#F0D080;--gold-pale:#FEF3C0;--gold-dim:#8B6914;--bg:#07060E;--surface:rgba(16,13,26,0.96);--surface2:rgba(22,18,36,0.92);--text:#F0EAD6;--text-muted:#9080A0;--border:rgba(201,168,76,0.22);--border-b:rgba(201,168,76,0.5);}
+:root{--gold:#C9A84C;--gold-bright:#F0D080;--gold-pale:#FEF3C0;--gold-dim:#8B6914;--bg:#07060E;--surface:rgba(16,13,26,0.96);--surface2:rgba(22,18,36,0.92);--text:#F0EAD6;--text-muted:#9080A0;--border:rgba(201,168,76,0.22);--border-b:rgba(201,168,76,0.5);--alert:#FF7A6E;}
 *{margin:0;padding:0;box-sizing:border-box;}
 body{font-family:'Noto Sans KR',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden;padding-bottom:90px;}
 
-/* ════ 축하 마키 배너 ════ */
-.marquee{
-  position:relative;width:100%;
-  background:linear-gradient(90deg,rgba(20,15,5,0.95) 0%,rgba(40,30,8,0.95) 50%,rgba(20,15,5,0.95) 100%);
-  border-bottom:1px solid rgba(245,217,120,0.4);
-  box-shadow:0 2px 20px rgba(245,217,120,0.15);
-  overflow:hidden;
-  z-index:50;
-  padding:9px 0;
-}
-.marquee::before, .marquee::after{
-  content:'';position:absolute;top:0;bottom:0;width:60px;z-index:2;pointer-events:none;
-}
+/* ════ 마키 ════ */
+.marquee{position:relative;width:100%;background:linear-gradient(90deg,rgba(20,15,5,0.95) 0%,rgba(40,30,8,0.95) 50%,rgba(20,15,5,0.95) 100%);border-bottom:1px solid rgba(245,217,120,0.4);box-shadow:0 2px 20px rgba(245,217,120,0.15);overflow:hidden;z-index:50;padding:9px 0;}
+.marquee::before,.marquee::after{content:'';position:absolute;top:0;bottom:0;width:60px;z-index:2;pointer-events:none;}
 .marquee::before{left:0;background:linear-gradient(90deg,#07060E,transparent);}
 .marquee::after{right:0;background:linear-gradient(-90deg,#07060E,transparent);}
-.marquee-track{
-  display:flex;width:max-content;
-  animation:marqueeLTR 32s linear infinite;
-}
-@keyframes marqueeLTR{
-  from{transform:translateX(-50%);}
-  to{transform:translateX(0);}
-}
-.mq-chunk{
-  display:inline-flex;align-items:center;gap:24px;
-  font-family:'Noto Serif KR',serif;font-weight:700;
-  font-size:0.9rem;letter-spacing:0.12em;white-space:nowrap;
-  padding-right:24px;
-}
-.mq-text{
-  background:linear-gradient(135deg,#FEF3C0 0%,#F5D978 35%,#D4A93A 60%,#F5D978 85%,#FEF3C0 100%);
-  background-size:200% 200%;
-  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
-  animation:shimmer 4s ease-in-out infinite;
-}
+.marquee-track{display:flex;width:max-content;animation:marqueeLTR 32s linear infinite;}
+@keyframes marqueeLTR{from{transform:translateX(-50%)}to{transform:translateX(0)}}
+.mq-chunk{display:inline-flex;align-items:center;gap:24px;font-family:'Noto Serif KR',serif;font-weight:700;font-size:0.9rem;letter-spacing:0.12em;white-space:nowrap;padding-right:24px;}
+.mq-text{background:linear-gradient(135deg,#FEF3C0 0%,#F5D978 35%,#D4A93A 60%,#F5D978 85%,#FEF3C0 100%);background-size:200% 200%;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:shimmer 4s ease-in-out infinite;}
 .mq-sep{color:rgba(245,217,120,0.6);font-size:0.7rem;letter-spacing:0.4em;}
 .mq-emoji{filter:drop-shadow(0 0 6px rgba(245,217,120,0.5));}
 
@@ -53,56 +27,29 @@ canvas#starfield{position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;po
 .nb2{width:400px;height:400px;background:radial-gradient(circle,rgba(201,168,76,0.07) 0%,transparent 70%);bottom:100px;left:-100px;animation:nbFloat 22s ease-in-out infinite alternate-reverse;}
 @keyframes nbFloat{from{transform:translate(0,0) scale(1)}to{transform:translate(28px,18px) scale(1.1)}}
 
+/* ════ HEADER ════ */
 .hd-root{position:relative;overflow:hidden;background:linear-gradient(180deg,#04030A 0%,#080612 50%,#07060E 100%);margin-bottom:18px;z-index:1;}
 canvas.hd-bg{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:1;}
 .hd-orb{position:absolute;border-radius:50%;pointer-events:none;z-index:1;}
 .hd-orb1{width:340px;height:340px;background:radial-gradient(circle,rgba(100,60,200,0.13) 0%,transparent 68%);top:-100px;right:-80px;animation:nbFloat 16s ease-in-out infinite alternate;filter:blur(60px);}
 .hd-orb2{width:260px;height:260px;background:radial-gradient(circle,rgba(180,140,50,0.1) 0%,transparent 68%);bottom:-60px;left:-60px;animation:nbFloat 20s ease-in-out infinite alternate-reverse;filter:blur(60px);}
-
-/* ── A. GOLD LIGHT SWEEP ── */
-.gold-sweep{
-  position:absolute;top:-50%;left:-50%;
-  width:60%;height:200%;
-  background:linear-gradient(110deg,transparent 0%,transparent 40%,rgba(255,230,140,0.18) 48%,rgba(255,255,200,0.32) 50%,rgba(255,230,140,0.18) 52%,transparent 60%,transparent 100%);
-  transform:translateX(-100%) rotate(15deg);
-  pointer-events:none;z-index:2;
-  animation:sweepMove 7s ease-in-out infinite;
-}
+.gold-sweep{position:absolute;top:-50%;left:-50%;width:60%;height:200%;background:linear-gradient(110deg,transparent 0%,transparent 40%,rgba(255,230,140,0.18) 48%,rgba(255,255,200,0.32) 50%,rgba(255,230,140,0.18) 52%,transparent 60%,transparent 100%);transform:translateX(-100%) rotate(15deg);pointer-events:none;z-index:2;animation:sweepMove 7s ease-in-out infinite;}
 @keyframes sweepMove{0%{transform:translateX(-100%) rotate(15deg)}45%,100%{transform:translateX(420%) rotate(15deg)}}
-
-/* ── C. SPOTLIGHT ── */
-.spotlight{
-  position:absolute;top:-20%;left:50%;transform:translateX(-50%);
-  width:280px;height:280px;
-  background:radial-gradient(ellipse at top,rgba(255,240,180,0.22) 0%,rgba(255,240,180,0.1) 25%,transparent 60%);
-  pointer-events:none;z-index:2;
-}
-
-/* ── F. AURORA ── */
-.aurora{
-  position:absolute;top:90px;left:50%;transform:translateX(-50%);
-  width:340px;height:340px;
-  pointer-events:none;z-index:2;
-  filter:blur(45px);opacity:0.8;
-}
+.spotlight{position:absolute;top:-20%;left:50%;transform:translateX(-50%);width:280px;height:280px;background:radial-gradient(ellipse at top,rgba(255,240,180,0.22) 0%,rgba(255,240,180,0.1) 25%,transparent 60%);pointer-events:none;z-index:2;}
+.aurora{position:absolute;top:90px;left:50%;transform:translateX(-50%);width:340px;height:340px;pointer-events:none;z-index:2;filter:blur(45px);opacity:0.8;}
 .aurora svg{width:100%;height:100%;}
-
 .hd-inner{position:relative;z-index:3;display:flex;flex-direction:column;align-items:center;padding:38px 24px 40px;text-align:center;}
-
 .kb-logo{display:inline-flex;align-items:center;gap:10px;margin-bottom:26px;padding:8px 18px;background:rgba(255,188,0,0.04);border:0.5px solid rgba(255,188,0,0.2);border-radius:6px;backdrop-filter:blur(6px);}
 .kb-star-svg{width:28px;height:28px;flex-shrink:0;filter:drop-shadow(0 0 8px rgba(255,200,30,0.5));animation:starPulse 2.4s ease-in-out infinite;}
 @keyframes starPulse{0%,100%{filter:drop-shadow(0 0 6px rgba(255,200,30,0.4))}50%{filter:drop-shadow(0 0 14px rgba(255,210,80,0.9))}}
 .kb-text{display:flex;align-items:baseline;gap:8px;}
 .kb-en{font-family:'Noto Sans KR',sans-serif;font-weight:700;font-size:1.15rem;color:#FFBC00;letter-spacing:0.02em;line-height:1;}
 .kb-kr{font-family:'Noto Sans KR',sans-serif;font-weight:400;font-size:0.85rem;color:rgba(240,240,240,0.85);letter-spacing:0.06em;line-height:1;border-left:0.5px solid rgba(255,188,0,0.4);padding-left:8px;}
-
 .hd-toprule{display:flex;align-items:center;gap:0;width:min(380px,90%);margin-bottom:24px;}
 .hd-rl{flex:1;height:0.5px;background:linear-gradient(90deg,transparent,rgba(201,168,76,0.7),rgba(240,208,128,1),rgba(201,168,76,0.7),transparent);}
 .hd-rc{display:flex;align-items:center;gap:6px;padding:0 12px;}
 .hd-sq{width:6px;height:6px;background:#F5D978;transform:rotate(45deg);box-shadow:0 0 8px 1px rgba(245,217,120,0.6);}
 .hd-ds{width:2.5px;height:2.5px;background:rgba(201,168,76,0.6);border-radius:50%;}
-
-/* ── MEDALLION + C ROTATION ── */
 .medallion{position:relative;width:120px;height:120px;margin-bottom:22px;animation:medalGlow 3.5s ease-in-out infinite;}
 @keyframes medalGlow{0%,100%{filter:drop-shadow(0 0 10px rgba(201,168,76,0.5)) drop-shadow(0 0 30px rgba(201,168,76,0.15));}50%{filter:drop-shadow(0 0 20px rgba(245,217,120,0.85)) drop-shadow(0 0 60px rgba(201,168,76,0.3));}}
 .medal-rotate-layer{position:absolute;inset:0;animation:medalSpin 24s linear infinite;}
@@ -112,35 +59,13 @@ canvas.hd-bg{position:absolute;inset:0;width:100%;height:100%;pointer-events:non
 .medal-num{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:2.6rem;line-height:1;letter-spacing:-0.04em;background:linear-gradient(160deg,#FEF3C0 0%,#F5D978 30%,#C9920A 60%,#F5D978 90%);background-size:200% 200%;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:shimmer 5s ease-in-out infinite;margin-top:-3px;}
 @keyframes shimmer{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
 .medal-num-sub{font-family:'Cormorant Garamond',serif;font-weight:400;font-style:italic;font-size:0.62rem;color:rgba(240,210,120,0.65);letter-spacing:0.18em;margin-top:-2px;}
-
 .hd-years{display:flex;align-items:center;gap:10px;font-family:'Cormorant Garamond',serif;font-size:0.78rem;font-weight:300;color:rgba(201,168,76,0.7);letter-spacing:0.3em;margin-bottom:14px;}
 .hd-yr-dot{width:3px;height:3px;background:rgba(201,168,76,0.6);border-radius:50%;}
-
-/* ── E. TITLE GLEAM ── */
 .hd-title-wrap{position:relative;display:inline-block;margin-bottom:6px;overflow:hidden;}
-.hd-title{
-  font-family:'Noto Serif KR',serif;font-weight:900;
-  font-size:clamp(1.85rem,6.2vw,2.55rem);
-  white-space:nowrap;letter-spacing:0.04em;
-  background:linear-gradient(160deg,#FEF3C0 0%,#F5D978 25%,#D4A93A 50%,#F5D978 72%,#FEF3C0 88%,#C9920A 100%);
-  background-size:200% 200%;
-  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
-  animation:shimmer 5s ease-in-out infinite;
-}
-.title-gleam{
-  position:absolute;top:0;left:-100%;width:100%;height:100%;
-  font-family:'Noto Serif KR',serif;font-weight:900;
-  font-size:clamp(1.85rem,6.2vw,2.55rem);
-  white-space:nowrap;letter-spacing:0.04em;
-  background:linear-gradient(110deg,transparent 30%,rgba(255,255,255,0.85) 50%,transparent 70%);
-  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
-  pointer-events:none;
-  animation:gleamSweep 3.5s ease-in-out infinite;
-}
+.hd-title{font-family:'Noto Serif KR',serif;font-weight:900;font-size:clamp(1.85rem,6.2vw,2.55rem);white-space:nowrap;letter-spacing:0.04em;background:linear-gradient(160deg,#FEF3C0 0%,#F5D978 25%,#D4A93A 50%,#F5D978 72%,#FEF3C0 88%,#C9920A 100%);background-size:200% 200%;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:shimmer 5s ease-in-out infinite;}
+.title-gleam{position:absolute;top:0;left:-100%;width:100%;height:100%;font-family:'Noto Serif KR',serif;font-weight:900;font-size:clamp(1.85rem,6.2vw,2.55rem);white-space:nowrap;letter-spacing:0.04em;background:linear-gradient(110deg,transparent 30%,rgba(255,255,255,0.85) 50%,transparent 70%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;pointer-events:none;animation:gleamSweep 3.5s ease-in-out infinite;}
 @keyframes gleamSweep{0%{left:-100%}60%,100%{left:100%}}
-
 .hd-sub{font-family:'Cormorant Garamond',serif;font-size:0.95rem;font-weight:300;font-style:italic;color:rgba(240,210,120,0.5);letter-spacing:0.18em;margin-bottom:26px;}
-
 .hd-botrule{display:flex;align-items:center;gap:10px;width:min(340px,88%);}
 .hd-bl{flex:1;height:0.5px;background:linear-gradient(90deg,transparent,rgba(201,168,76,0.6));}
 .hd-bl.r{background:linear-gradient(90deg,rgba(201,168,76,0.6),transparent);}
@@ -149,24 +74,43 @@ canvas.hd-bg{position:absolute;inset:0;width:100%;height:100%;pointer-events:non
 .hd-bm-ds{width:2.5px;height:2.5px;background:rgba(201,168,76,0.4);border-radius:50%;}
 .hd-bm-line{width:22px;height:0.5px;background:rgba(201,168,76,0.5);}
 
-.container{max-width:560px;margin:0 auto;padding:0 16px 40px;position:relative;z-index:1;}
+/* ════ COMMON CONTENT ════ */
+.container{max-width:560px;margin:0 auto;padding:0 16px 30px;position:relative;z-index:1;}
 .card{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:18px 20px;margin-bottom:14px;position:relative;overflow:hidden;backdrop-filter:blur(12px);animation:riseIn 0.7s cubic-bezier(.22,.68,0,1.2) both;}
 .card::before{content:'';position:absolute;inset:0;border-radius:16px;background:linear-gradient(135deg,rgba(240,208,128,0.05) 0%,transparent 60%);pointer-events:none;}
 .card::after{content:'';position:absolute;top:0;left:20%;right:20%;height:1px;background:linear-gradient(90deg,transparent,var(--gold-bright),transparent);opacity:0.65;}
 @keyframes riseIn{from{opacity:0;transform:translateY(20px) scale(0.97)}to{opacity:1;transform:translateY(0) scale(1)}}
-.card:nth-child(1){animation-delay:.05s}.card:nth-child(2){animation-delay:.15s}.card:nth-child(3){animation-delay:.25s}.card:nth-child(4){animation-delay:.35s}
+.card:nth-child(1){animation-delay:.05s}.card:nth-child(2){animation-delay:.12s}.card:nth-child(3){animation-delay:.22s}.card:nth-child(4){animation-delay:.32s}.card:nth-child(5){animation-delay:.42s}
+
+/* ════ D-DAY COUNTDOWN ════ */
+.countdown-card{padding:22px 20px 20px;}
+.cd-label{display:flex;align-items:center;justify-content:center;gap:10px;font-family:'Cormorant Garamond',serif;font-size:0.78rem;font-weight:400;font-style:italic;color:var(--gold-bright);letter-spacing:0.25em;margin-bottom:18px;text-transform:uppercase;}
+.cd-label-line{flex:0 0 30px;height:0.5px;background:linear-gradient(90deg,transparent,var(--gold));}
+.cd-label-line.r{background:linear-gradient(90deg,var(--gold),transparent);}
+.cd-grid{display:flex;align-items:center;justify-content:center;gap:6px;margin-bottom:14px;}
+.cd-unit{flex:1;max-width:90px;background:linear-gradient(180deg,rgba(201,168,76,0.12),rgba(201,168,76,0.04));border:1px solid rgba(201,168,76,0.35);border-radius:10px;padding:10px 4px 8px;position:relative;overflow:hidden;}
+.cd-unit::before{content:'';position:absolute;top:0;left:10%;right:10%;height:1px;background:linear-gradient(90deg,transparent,var(--gold-bright),transparent);}
+.cd-num{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(1.8rem,7vw,2.4rem);line-height:1;text-align:center;background:linear-gradient(160deg,#FEF3C0,#F5D978,#C9920A,#F5D978);background-size:200% 200%;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:shimmer 5s ease-in-out infinite;font-variant-numeric:tabular-nums;}
+.cd-lbl{font-family:'Noto Sans KR',sans-serif;font-size:0.62rem;font-weight:500;color:var(--gold);letter-spacing:0.15em;text-align:center;margin-top:6px;text-transform:uppercase;}
+.cd-sep{font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:300;color:var(--gold-dim);line-height:1;padding-bottom:18px;}
+.cd-foot{text-align:center;font-size:0.78rem;color:var(--text-muted);letter-spacing:0.05em;padding-top:12px;border-top:1px solid var(--border);}
+.cd-foot strong{color:var(--gold-bright);font-weight:700;}
+
+/* ════ DATE/SECTION/TABLE ════ */
 .icon-row{display:flex;align-items:center;gap:14px;}
-.icon-hex{width:44px;height:44px;background:linear-gradient(135deg,rgba(201,168,76,0.18),rgba(201,168,76,0.06));border:1px solid var(--border-b);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.25rem;flex-shrink:0;}
+.icon-hex{width:44px;height:44px;background:linear-gradient(135deg,rgba(201,168,76,0.18),rgba(201,168,76,0.06));border:1px solid var(--border-b);border-radius:12px;display:flex;align-items:center;justify-content:center;flex-shrink:0;color:var(--gold-bright);}
+.icon-hex svg{width:22px;height:22px;}
 .date-text{font-size:1rem;font-weight:700;color:var(--text);letter-spacing:0.02em;}
 .sec-label{display:flex;align-items:center;gap:10px;font-family:'Noto Serif KR',serif;font-size:0.95rem;font-weight:700;color:var(--gold-bright);letter-spacing:0.07em;margin-bottom:12px;padding-bottom:10px;border-bottom:1px solid var(--border);}
 .sec-label::before{content:'';display:inline-block;width:3px;height:16px;background:linear-gradient(180deg,var(--gold-bright),var(--gold-dim));border-radius:2px;}
-.room-note{font-size:0.78rem;color:var(--text-muted);line-height:1.85;margin-bottom:12px;padding:10px 14px;background:rgba(201,168,76,0.05);border-left:2px solid var(--gold-dim);border-radius:0 8px 8px 0;}
 table{width:100%;border-collapse:separate;border-spacing:0;font-size:0.81rem;}
 thead th{background:linear-gradient(180deg,rgba(201,168,76,0.18),rgba(201,168,76,0.08));color:var(--gold-bright);font-weight:700;padding:9px 5px;text-align:center;font-size:0.79rem;letter-spacing:0.06em;border-bottom:1px solid var(--border-b);}
 thead th:first-child{border-radius:8px 0 0 0}thead th:last-child{border-radius:0 8px 0 0}
 td{padding:8px 5px;text-align:center;border-bottom:1px solid rgba(201,168,76,0.07);color:var(--text);transition:background .2s;}
 tr:last-child td{border-bottom:none}tr:hover td{background:rgba(201,168,76,0.04)}
 td:first-child{font-weight:700;color:var(--gold);font-family:'Noto Serif KR',serif;font-size:0.77rem;letter-spacing:0.02em;}
+
+/* ════ SCHEDULE ════ */
 .sched-item{display:flex;gap:14px;padding:14px 0;border-bottom:1px solid rgba(201,168,76,0.08);}
 .sched-item:last-child{border-bottom:none;padding-bottom:0}.sched-item:first-child{padding-top:0}
 .step-left{display:flex;flex-direction:column;align-items:center;flex-shrink:0;}
@@ -179,14 +123,105 @@ td:first-child{font-weight:700;color:var(--gold);font-family:'Noto Serif KR',ser
 .step-badge{display:inline-block;font-size:0.7rem;color:var(--gold);background:rgba(201,168,76,0.1);border:1px solid rgba(201,168,76,0.28);padding:2px 9px;border-radius:20px;margin-bottom:6px;}
 .step-info{font-size:0.77rem;color:var(--text-muted);line-height:1.85;}
 .step-info p::before{content:'○  ';color:rgba(201,168,76,0.45)}
-.step-alert{font-size:0.8rem;font-weight:700;color:#FF7A6E;margin-top:5px;}
-.step-alert::before{content:'★  '}
-.step-img{width:90px;height:68px;border-radius:10px;border:1px solid var(--border);flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:2rem;background:var(--surface2);}
-.other-inner{display:flex;gap:14px;align-items:flex-start}
-.star-badge{width:38px;height:38px;background:linear-gradient(135deg,rgba(201,168,76,0.18),rgba(201,168,76,0.06));border:1px solid var(--border-b);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0;}
-.other-title{font-family:'Noto Serif KR',serif;font-weight:700;font-size:0.9rem;color:var(--gold-bright);margin-bottom:8px}
-.other-list{list-style:none;font-size:0.8rem;color:var(--text-muted);line-height:1.95}
-.other-list li::before{content:'–  ';color:var(--gold-dim)}
+
+/* ━━ GOLD LINE SVG ICON BOX ━━ */
+.step-img{width:90px;height:74px;border-radius:10px;border:1px solid var(--border);flex-shrink:0;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,rgba(20,16,30,0.95),rgba(15,12,24,0.98));position:relative;overflow:hidden;}
+.step-img::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at top right,rgba(245,217,120,0.08),transparent 70%);}
+.step-img::after{content:'';position:absolute;top:0;left:15%;right:15%;height:0.5px;background:linear-gradient(90deg,transparent,rgba(245,217,120,0.4),transparent);}
+.step-img svg{width:48px;height:48px;position:relative;z-index:1;filter:drop-shadow(0 0 6px rgba(245,217,120,0.25));}
+
+/* ━━ CHECKOUT ALERT (D2) ━━ */
+.checkout-alert{
+  display:flex;align-items:center;gap:10px;
+  background:linear-gradient(135deg,rgba(255,122,110,0.12),rgba(255,122,110,0.04));
+  border:1px solid rgba(255,122,110,0.4);
+  border-radius:10px;
+  padding:9px 12px;
+  margin-top:8px;
+  position:relative;
+  animation:alertPulse 2.2s ease-in-out infinite;
+}
+@keyframes alertPulse{
+  0%,100%{box-shadow:0 0 0 0 rgba(255,122,110,0.4),inset 0 0 12px rgba(255,122,110,0.04);}
+  50%{box-shadow:0 0 0 6px rgba(255,122,110,0),inset 0 0 18px rgba(255,122,110,0.12);}
+}
+.checkout-clock{
+  width:22px;height:22px;flex-shrink:0;
+  color:var(--alert);
+  animation:clockTick 2s ease-in-out infinite;
+}
+@keyframes clockTick{
+  0%,100%{transform:rotate(0deg) scale(1);}
+  25%{transform:rotate(-6deg) scale(1.05);}
+  75%{transform:rotate(6deg) scale(1.05);}
+}
+.checkout-clock svg{width:100%;height:100%;}
+.checkout-text{
+  font-size:0.82rem;font-weight:700;
+  color:#FFB0A6;letter-spacing:0.02em;
+  flex:1;line-height:1.4;
+}
+
+/* ════ 기타 (with subsections) ════ */
+.other-section{margin-bottom:14px;}
+.other-section:last-child{margin-bottom:0;}
+.other-sub-title{
+  font-family:'Noto Serif KR',serif;font-weight:700;
+  font-size:0.82rem;color:var(--gold-bright);
+  margin-bottom:8px;letter-spacing:0.04em;
+  display:flex;align-items:center;gap:8px;
+}
+.other-sub-title::before{
+  content:'';display:inline-block;
+  width:5px;height:5px;background:var(--gold);
+  transform:rotate(45deg);flex-shrink:0;
+}
+.other-list{list-style:none;font-size:0.8rem;color:var(--text-muted);line-height:1.95;padding-left:14px;}
+.other-list li{position:relative;padding-left:4px;}
+.other-list li::before{content:'–';position:absolute;left:-12px;color:var(--gold-dim);}
+
+/* ════ FOOTER (D3) ════ */
+.footer{
+  max-width:560px;margin:30px auto 24px;padding:0 16px;
+  text-align:center;position:relative;z-index:1;
+}
+.footer-ornament{
+  display:flex;align-items:center;justify-content:center;gap:10px;
+  margin-bottom:18px;
+}
+.footer-orn-line{flex:0 0 80px;height:0.5px;background:linear-gradient(90deg,transparent,rgba(201,168,76,0.5));}
+.footer-orn-line.r{background:linear-gradient(90deg,rgba(201,168,76,0.5),transparent);}
+.footer-orn-center{display:flex;align-items:center;gap:6px;}
+.footer-orn-sq{width:5px;height:5px;background:rgba(201,168,76,0.6);transform:rotate(45deg);}
+.footer-orn-ds{width:2.5px;height:2.5px;background:rgba(201,168,76,0.4);border-radius:50%;}
+
+.footer-text{
+  font-family:'Cormorant Garamond',serif;
+  font-size:0.92rem;font-weight:300;font-style:italic;
+  color:rgba(240,210,120,0.65);
+  letter-spacing:0.06em;
+  line-height:1.7;
+}
+.footer-heart{
+  display:inline-block;
+  color:#FF6B7A;
+  font-size:0.9rem;
+  filter:drop-shadow(0 0 6px rgba(255,107,122,0.5));
+  animation:heartBeat 1.4s ease-in-out infinite;
+  margin:0 2px;
+}
+@keyframes heartBeat{0%,100%{transform:scale(1);}50%{transform:scale(1.25);}}
+
+.footer-sub{
+  font-family:'Noto Sans KR',sans-serif;
+  font-size:0.72rem;font-weight:400;
+  color:var(--text-muted);
+  letter-spacing:0.2em;
+  margin-top:6px;
+}
+.footer-sub strong{color:var(--gold);font-weight:700;}
+
+/* ════ MUSIC BAR ════ */
 .music-bar{position:fixed;bottom:0;left:0;right:0;z-index:100;padding:0 16px;}
 .music-inner{max-width:560px;margin:0 auto;background:rgba(8,6,18,0.97);border:1px solid var(--border-b);border-bottom:none;border-radius:16px 16px 0 0;padding:12px 18px;display:flex;align-items:center;gap:14px;backdrop-filter:blur(20px);box-shadow:0 -4px 40px rgba(0,0,0,0.65),inset 0 -1px 0 rgba(201,168,76,0.12);}
 .play-btn{width:42px;height:42px;border-radius:50%;background:linear-gradient(135deg,var(--gold-bright),var(--gold),var(--gold-dim));border:none;outline:none;display:flex;align-items:center;justify-content:center;font-size:0.95rem;cursor:pointer;color:#06050A;font-weight:900;flex-shrink:0;transition:transform .2s,box-shadow .2s;box-shadow:0 0 20px rgba(201,168,76,0.5);position:relative;}
@@ -206,7 +241,19 @@ td:first-child{font-weight:700;color:var(--gold);font-family:'Noto Serif KR',ser
 </head>
 <body>
 
-<!-- ══════ 축하 마키 ══════ -->
+<!-- ════ 글로벌 골드 그라데이션 정의 ════ -->
+<svg width="0" height="0" style="position:absolute">
+  <defs>
+    <linearGradient id="goldLine" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#FEF3C0"/>
+      <stop offset="40%" stop-color="#F5D978"/>
+      <stop offset="80%" stop-color="#C9A84C"/>
+      <stop offset="100%" stop-color="#F5D978"/>
+    </linearGradient>
+  </defs>
+</svg>
+
+<!-- 마키 -->
 <div class="marquee">
   <div class="marquee-track">
     <span class="mq-chunk"><span class="mq-emoji">🎉</span><span class="mq-text">30주년을 축하합니다</span><span class="mq-sep">✦ ✦ ✦</span><span class="mq-text">KB 국민은행 동기 30주년 기념행사</span><span class="mq-sep">✦ ✦ ✦</span><span class="mq-text">Congratulations on 30 Wonderful Years</span><span class="mq-sep">✦ ✦ ✦</span><span class="mq-emoji">🥂</span><span class="mq-text">1996 - 2026 함께한 시간</span><span class="mq-sep">✦ ✦ ✦</span></span>
@@ -219,21 +266,13 @@ td:first-child{font-weight:700;color:var(--gold);font-family:'Noto Serif KR',ser
 <div class="nebula nb2"></div>
 <div id="yt-player"></div>
 
-<!-- ══════ HEADER (all 6 effects) ══════ -->
+<!-- 헤더 -->
 <div class="hd-root" id="hdRoot">
   <div class="hd-orb hd-orb1"></div>
   <div class="hd-orb hd-orb2"></div>
-
-  <!-- BG canvas: stars + dust(B) + fireworks(D) -->
   <canvas class="hd-bg" id="hd-canvas"></canvas>
-
-  <!-- A. Gold sweep -->
   <div class="gold-sweep"></div>
-
-  <!-- C. Spotlight -->
   <div class="spotlight"></div>
-
-  <!-- F. Aurora -->
   <div class="aurora">
     <svg viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg">
       <defs>
@@ -241,30 +280,18 @@ td:first-child{font-weight:700;color:var(--gold);font-family:'Noto Serif KR',ser
         <radialGradient id="aur2"><stop offset="0%" stop-color="#F5D978" stop-opacity="0.7"/><stop offset="100%" stop-color="#F5D978" stop-opacity="0"/></radialGradient>
         <radialGradient id="aur3"><stop offset="0%" stop-color="#7B5FBF" stop-opacity="0.5"/><stop offset="100%" stop-color="#7B5FBF" stop-opacity="0"/></radialGradient>
       </defs>
-      <circle cx="150" cy="150" r="80" fill="url(#aur1)">
-        <animate attributeName="cx" values="150;130;170;150" dur="6s" repeatCount="indefinite"/>
-        <animate attributeName="cy" values="150;160;140;150" dur="7s" repeatCount="indefinite"/>
-      </circle>
-      <circle cx="150" cy="150" r="60" fill="url(#aur2)">
-        <animate attributeName="cx" values="150;180;130;150" dur="8s" repeatCount="indefinite"/>
-        <animate attributeName="cy" values="150;130;170;150" dur="9s" repeatCount="indefinite"/>
-      </circle>
-      <circle cx="150" cy="150" r="70" fill="url(#aur3)">
-        <animate attributeName="cx" values="150;120;180;150" dur="10s" repeatCount="indefinite"/>
-        <animate attributeName="cy" values="150;180;120;150" dur="11s" repeatCount="indefinite"/>
-      </circle>
+      <circle cx="150" cy="150" r="80" fill="url(#aur1)"><animate attributeName="cx" values="150;130;170;150" dur="6s" repeatCount="indefinite"/><animate attributeName="cy" values="150;160;140;150" dur="7s" repeatCount="indefinite"/></circle>
+      <circle cx="150" cy="150" r="60" fill="url(#aur2)"><animate attributeName="cx" values="150;180;130;150" dur="8s" repeatCount="indefinite"/><animate attributeName="cy" values="150;130;170;150" dur="9s" repeatCount="indefinite"/></circle>
+      <circle cx="150" cy="150" r="70" fill="url(#aur3)"><animate attributeName="cx" values="150;120;180;150" dur="10s" repeatCount="indefinite"/><animate attributeName="cy" values="150;180;120;150" dur="11s" repeatCount="indefinite"/></circle>
     </svg>
   </div>
-
   <div class="hd-inner">
     <div class="kb-logo">
       <svg class="kb-star-svg" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
         <defs><radialGradient id="kbStar" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="#FFE070"/><stop offset="60%" stop-color="#FFBC00"/><stop offset="100%" stop-color="#E0A000"/></radialGradient></defs>
         <g fill="url(#kbStar)">
-          <path d="M16 1 L17.5 14.5 L16 16 L14.5 14.5 Z"/>
-          <path d="M16 31 L17.5 17.5 L16 16 L14.5 17.5 Z"/>
-          <path d="M1 16 L14.5 17.5 L16 16 L14.5 14.5 Z"/>
-          <path d="M31 16 L17.5 14.5 L16 16 L17.5 17.5 Z"/>
+          <path d="M16 1 L17.5 14.5 L16 16 L14.5 14.5 Z"/><path d="M16 31 L17.5 17.5 L16 16 L14.5 17.5 Z"/>
+          <path d="M1 16 L14.5 17.5 L16 16 L14.5 14.5 Z"/><path d="M31 16 L17.5 14.5 L16 16 L17.5 17.5 Z"/>
           <path d="M5.5 5.5 L13.5 13.5 L16 16 L14 13 Z" opacity="0.85"/>
           <path d="M26.5 26.5 L18.5 18.5 L16 16 L18 19 Z" opacity="0.85"/>
           <path d="M26.5 5.5 L18.5 13.5 L16 16 L19 14 Z" opacity="0.85"/>
@@ -274,14 +301,11 @@ td:first-child{font-weight:700;color:var(--gold);font-family:'Noto Serif KR',ser
       </svg>
       <div class="kb-text"><span class="kb-en">KB</span><span class="kb-kr">국민은행</span></div>
     </div>
-
     <div class="hd-toprule">
       <div class="hd-rl"></div>
       <div class="hd-rc"><div class="hd-ds"></div><div class="hd-sq"></div><div class="hd-ds"></div></div>
       <div class="hd-rl"></div>
     </div>
-
-    <!-- C. Medallion with rotation -->
     <div class="medallion">
       <div class="medal-rotate-layer">
         <svg class="medal-svg" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -309,16 +333,12 @@ td:first-child{font-weight:700;color:var(--gold);font-family:'Noto Serif KR',ser
         <span class="medal-num-sub">YEARS</span>
       </div>
     </div>
-
     <div class="hd-years"><span>1996</span><div class="hd-yr-dot"></div><div class="hd-yr-dot"></div><span>2026</span></div>
-
-    <!-- E. Title with gleam sweep -->
     <div class="hd-title-wrap">
       <div class="hd-title">동기 30주년 행사</div>
       <div class="title-gleam">동기 30주년 행사</div>
     </div>
     <div class="hd-sub">Colleagues · Memories · Celebration</div>
-
     <div class="hd-botrule">
       <div class="hd-bl"></div>
       <div class="hd-bm"><div class="hd-bm-ds"></div><div class="hd-bm-line"></div><div class="hd-bm-sq"></div><div class="hd-bm-line"></div><div class="hd-bm-ds"></div></div>
@@ -327,18 +347,47 @@ td:first-child{font-weight:700;color:var(--gold);font-family:'Noto Serif KR',ser
   </div>
 </div>
 
-<!-- ══════ CONTENT ══════ -->
+<!-- ════ CONTENT ════ -->
 <div class="container">
+
+  <!-- ⏳ D-Day Countdown -->
+  <div class="card countdown-card">
+    <div class="cd-label">
+      <div class="cd-label-line"></div>
+      <span>⏳ Countdown to Celebration</span>
+      <div class="cd-label-line r"></div>
+    </div>
+    <div class="cd-grid">
+      <div class="cd-unit"><div class="cd-num" id="cdD">--</div><div class="cd-lbl">Days · 일</div></div>
+      <div class="cd-sep">:</div>
+      <div class="cd-unit"><div class="cd-num" id="cdH">--</div><div class="cd-lbl">Hours · 시</div></div>
+      <div class="cd-sep">:</div>
+      <div class="cd-unit"><div class="cd-num" id="cdM">--</div><div class="cd-lbl">Min · 분</div></div>
+      <div class="cd-sep">:</div>
+      <div class="cd-unit"><div class="cd-num" id="cdS">--</div><div class="cd-lbl">Sec · 초</div></div>
+    </div>
+    <div class="cd-foot"><strong>2026.06.19(금) 18:00</strong> · 천수횟집 만찬 시작까지</div>
+  </div>
+
+  <!-- 📅 Date -->
   <div class="card">
     <div class="icon-row">
-      <div class="icon-hex">📅</div>
+      <div class="icon-hex">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="3" y="5" width="18" height="16" rx="2"/>
+          <line x1="3" y1="10" x2="21" y2="10"/>
+          <line x1="8" y1="3" x2="8" y2="7"/>
+          <line x1="16" y1="3" x2="16" y2="7"/>
+          <circle cx="12" cy="15" r="1.2" fill="currentColor"/>
+        </svg>
+      </div>
       <div class="date-text">2026년 6월 19일(금) 18시 ~ 20일(토) 11시</div>
     </div>
   </div>
 
+  <!-- 👥 방배정 -->
   <div class="card">
     <div class="sec-label">참석동기(32명) 및 방배정(8개 호실)</div>
-    <div class="room-note">· Two room 예약자(5개 호실) : 박영근, 권주희, 장연화, 변경숙, 남순애<br>· One room 예약자(3개 호실) : 이은선, 이미진, 홍순옥</div>
     <table>
       <thead><tr><th>구분</th><th colspan="5">방 배정 인원</th></tr></thead>
       <tbody>
@@ -354,9 +403,12 @@ td:first-child{font-weight:700;color:var(--gold);font-family:'Noto Serif KR',ser
     </table>
   </div>
 
+  <!-- 🗓️ 일정 (with gold SVG icons) -->
   <div class="card">
     <div class="sec-label">일 &nbsp; 정</div>
     <div>
+
+      <!-- 1. 천수횟집 (Fish) -->
       <div class="sched-item">
         <div class="step-left"><div class="step-num">1</div><div class="step-line"></div></div>
         <div class="step-body">
@@ -365,8 +417,18 @@ td:first-child{font-weight:700;color:var(--gold);font-family:'Noto Serif KR',ser
           <div class="step-badge">KB추천맛집 &nbsp;|&nbsp; 단체석 단독 홀</div>
           <div class="step-info"><p>보령시 해수욕장로 4길 34</p><p>T. 041-934-8400</p></div>
         </div>
-        <div class="step-img">🐟</div>
+        <div class="step-img">
+          <svg viewBox="0 0 60 60" fill="none" stroke="url(#goldLine)" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M8 30 C 14 18, 28 16, 40 24 C 45 27, 48 30, 48 30 C 48 30, 45 33, 40 36 C 28 44, 14 42, 8 30 Z"/>
+            <path d="M48 30 L 56 22 L 54 30 L 56 38 Z"/>
+            <circle cx="18" cy="28" r="1.5" fill="url(#goldLine)"/>
+            <path d="M28 24 Q 34 30, 28 36" opacity="0.6"/>
+            <path d="M34 22 Q 40 30, 34 38" opacity="0.4"/>
+          </svg>
+        </div>
       </div>
+
+      <!-- 2. 비틀즈라이브 (Microphone) -->
       <div class="sched-item">
         <div class="step-left"><div class="step-num">2</div><div class="step-line"></div></div>
         <div class="step-body">
@@ -375,8 +437,20 @@ td:first-child{font-weight:700;color:var(--gold);font-family:'Noto Serif KR',ser
           <div class="step-badge">홀 전체 대관</div>
           <div class="step-info"><p>보령시 머드로 93 2층</p><p>차량 3분거리 (차량 지원 예정)</p></div>
         </div>
-        <div class="step-img">🎸</div>
+        <div class="step-img">
+          <svg viewBox="0 0 60 60" fill="none" stroke="url(#goldLine)" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="24" y="8" width="12" height="22" rx="6"/>
+            <line x1="27" y1="14" x2="33" y2="14" opacity="0.4"/>
+            <line x1="27" y1="19" x2="33" y2="19" opacity="0.4"/>
+            <line x1="27" y1="24" x2="33" y2="24" opacity="0.4"/>
+            <path d="M18 28 C 18 35, 24 39, 30 39 C 36 39, 42 35, 42 28"/>
+            <line x1="30" y1="39" x2="30" y2="48"/>
+            <line x1="22" y1="48" x2="38" y2="48"/>
+          </svg>
+        </div>
       </div>
+
+      <!-- 3. 자유시간 (Moon + stars) -->
       <div class="sched-item">
         <div class="step-left"><div class="step-num">3</div><div class="step-line"></div></div>
         <div class="step-body">
@@ -384,18 +458,54 @@ td:first-child{font-weight:700;color:var(--gold);font-family:'Noto Serif KR',ser
           <div class="step-title">일정 종료 · 자유시간</div>
           <div class="step-info"><p>연수원까지 차량 지원 예정</p></div>
         </div>
-        <div class="step-img">🌙</div>
+        <div class="step-img">
+          <svg viewBox="0 0 60 60" fill="none" stroke="url(#goldLine)" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M42 32 A 14 14 0 1 1 32 16 A 11 11 0 0 0 42 32 Z"/>
+            <g fill="url(#goldLine)">
+              <circle cx="12" cy="14" r="0.9"/>
+              <circle cx="20" cy="44" r="1.1"/>
+              <circle cx="48" cy="46" r="0.9"/>
+              <circle cx="14" cy="34" r="0.7"/>
+            </g>
+            <path d="M8 12 L 8 18 M 5 15 L 11 15" opacity="0.5" stroke-width="0.8"/>
+            <path d="M50 18 L 50 24 M 47 21 L 53 21" opacity="0.5" stroke-width="0.8"/>
+          </svg>
+        </div>
       </div>
+
+      <!-- 4. 국본가 (Bowl + steam) -->
       <div class="sched-item">
         <div class="step-left"><div class="step-num">4</div><div class="step-line"></div></div>
         <div class="step-body">
           <div class="step-time">20일(토) 09시부터 ~ · 조식</div>
           <div class="step-title">국본가</div>
           <div class="step-badge">국밥류 조식 &nbsp;|&nbsp; 보령시 대해로 882</div>
-          <div class="step-alert">숙소 짐 정리 및 체크아웃 필수</div>
+
+          <!-- D2: Checkout Alert Box -->
+          <div class="checkout-alert">
+            <div class="checkout-clock">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="9"/>
+                <polyline points="12 7 12 12 15 14"/>
+              </svg>
+            </div>
+            <div class="checkout-text">숙소 짐 정리 및 체크아웃 필수</div>
+          </div>
+
         </div>
-        <div class="step-img">🍲</div>
+        <div class="step-img">
+          <svg viewBox="0 0 60 60" fill="none" stroke="url(#goldLine)" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M22 26 Q 20 20, 24 14 Q 22 9, 24 4" opacity="0.7"/>
+            <path d="M30 26 Q 28 20, 32 14 Q 30 9, 32 4" opacity="0.7"/>
+            <path d="M38 26 Q 36 20, 40 14 Q 38 9, 40 4" opacity="0.7"/>
+            <line x1="10" y1="32" x2="50" y2="32"/>
+            <path d="M12 32 Q 14 50, 30 50 Q 46 50, 48 32"/>
+            <line x1="14" y1="40" x2="46" y2="40" opacity="0.3"/>
+          </svg>
+        </div>
       </div>
+
+      <!-- 5. 대천 해변 (Sunset over waves) -->
       <div class="sched-item">
         <div class="step-left"><div class="step-num">5</div></div>
         <div class="step-body">
@@ -403,26 +513,74 @@ td:first-child{font-weight:700;color:var(--gold);font-family:'Noto Serif KR',ser
           <div class="step-title">대천 해변 · 노을광장</div>
           <div class="step-info"><p>단체 기념사진 촬영</p><p>해변 산책 / 행사 종료 및 해산</p></div>
         </div>
-        <div class="step-img">🌅</div>
+        <div class="step-img">
+          <svg viewBox="0 0 60 60" fill="none" stroke="url(#goldLine)" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="30" y1="8" x2="30" y2="14" opacity="0.7"/>
+            <line x1="18" y1="14" x2="22" y2="18" opacity="0.7"/>
+            <line x1="42" y1="14" x2="38" y2="18" opacity="0.7"/>
+            <line x1="14" y1="26" x2="20" y2="26" opacity="0.7"/>
+            <line x1="46" y1="26" x2="40" y2="26" opacity="0.7"/>
+            <path d="M18 36 A 12 12 0 0 1 42 36"/>
+            <line x1="6" y1="36" x2="54" y2="36"/>
+            <path d="M6 44 Q 12 41, 18 44 T 30 44 T 42 44 T 54 44" opacity="0.7"/>
+            <path d="M6 52 Q 12 49, 18 52 T 30 52 T 42 52 T 54 52" opacity="0.5"/>
+          </svg>
+        </div>
       </div>
+
     </div>
   </div>
 
+  <!-- ⭐ 기타 (with subsections; room reservation moved here) -->
   <div class="card">
-    <div class="other-inner">
-      <div class="star-badge">⭐</div>
-      <div>
-        <div class="other-title">기 타</div>
-        <ul class="other-list">
-          <li>예약자 이외의 차량은 인근 공영주차장 주차 (도보2분, 무료)</li>
-          <li>수건 및 개인용품 각자 준비 필수</li>
-        </ul>
-      </div>
+    <div class="sec-label">기 타 안 내</div>
+
+    <div class="other-section">
+      <div class="other-sub-title">호실 예약 안내</div>
+      <ul class="other-list">
+        <li>Two room 예약자 (5개 호실) : 박영근, 권주희, 장연화, 변경숙, 남순애</li>
+        <li>One room 예약자 (3개 호실) : 이은선, 이미진, 홍순옥</li>
+      </ul>
     </div>
+
+    <div class="other-section">
+      <div class="other-sub-title">주차 안내</div>
+      <ul class="other-list">
+        <li>예약자 이외의 차량은 인근 공영주차장 주차 (도보 2분, 무료)</li>
+      </ul>
+    </div>
+
+    <div class="other-section">
+      <div class="other-sub-title">개인 준비물</div>
+      <ul class="other-list">
+        <li>수건 및 개인용품 각자 준비 필수</li>
+      </ul>
+    </div>
+
+  </div>
+
+</div>
+
+<!-- ════ FOOTER (D3) ════ -->
+<div class="footer">
+  <div class="footer-ornament">
+    <div class="footer-orn-line"></div>
+    <div class="footer-orn-center">
+      <div class="footer-orn-ds"></div>
+      <div class="footer-orn-sq"></div>
+      <div class="footer-orn-ds"></div>
+    </div>
+    <div class="footer-orn-line r"></div>
+  </div>
+  <div class="footer-text">
+    Designed with <span class="footer-heart">♥</span> for 30 wonderful years
+  </div>
+  <div class="footer-sub">
+    <strong>KB 국민은행 동기회</strong> · 2026
   </div>
 </div>
 
-<!-- ══════ MUSIC BAR ══════ -->
+<!-- ════ MUSIC ════ -->
 <div class="music-bar">
   <div class="music-inner">
     <button class="play-btn pulse" id="playBtn" onclick="togglePlay()">▶</button>
@@ -442,7 +600,33 @@ td:first-child{font-weight:700;color:var(--gold);font-family:'Noto Serif KR',ser
 </div>
 
 <script>
-/* ── 전체 배경 별빛 + 슈팅스타 ── */
+/* ── D-DAY Countdown ── */
+const eventDate = new Date('2026-06-19T18:00:00+09:00');
+function pad(n){ return n<10 ? '0'+n : ''+n; }
+function tick(){
+  const now = new Date();
+  let diff = eventDate - now;
+  if(diff < 0){
+    document.getElementById('cdD').textContent = '00';
+    document.getElementById('cdH').textContent = '00';
+    document.getElementById('cdM').textContent = '00';
+    document.getElementById('cdS').textContent = '00';
+    document.querySelector('.cd-foot').innerHTML = '<strong>🎉 행사가 시작되었습니다!</strong>';
+    return;
+  }
+  const d = Math.floor(diff / 86400000);
+  const h = Math.floor((diff % 86400000) / 3600000);
+  const m = Math.floor((diff % 3600000) / 60000);
+  const s = Math.floor((diff % 60000) / 1000);
+  document.getElementById('cdD').textContent = pad(d);
+  document.getElementById('cdH').textContent = pad(h);
+  document.getElementById('cdM').textContent = pad(m);
+  document.getElementById('cdS').textContent = pad(s);
+}
+tick();
+setInterval(tick, 1000);
+
+/* ── 별빛 ── */
 (function(){
   const c=document.getElementById('starfield'),ctx=c.getContext('2d');
   function resize(){c.width=innerWidth;c.height=innerHeight;}
@@ -473,115 +657,48 @@ td:first-child{font-weight:700;color:var(--gold);font-family:'Noto Serif KR',ser
   })();
 })();
 
-/* ── 헤더 별빛 + B 골드더스트 + D 폭죽 ── */
+/* ── 헤더 캔버스 (별+더스트+폭죽) ── */
 (function(){
   const c=document.getElementById('hd-canvas'),ctx=c.getContext('2d');
   const hdRoot=document.getElementById('hdRoot');
   function resize(){c.width=hdRoot.offsetWidth;c.height=hdRoot.offsetHeight;}
   resize();new ResizeObserver(resize).observe(hdRoot);
-
   const stars=Array.from({length:80},()=>({x:Math.random(),y:Math.random(),r:Math.random()*1.3+0.3,base:Math.random()*.4+.08,spd:Math.random()*1.4+.4,off:Math.random()*Math.PI*2,gold:Math.random()<.22}));
-
-  // B. Gold dust
   const dust=Array.from({length:40},()=>spawnDust());
-  function spawnDust(){
-    return {
-      x:Math.random(),y:Math.random()*-0.3,
-      r:Math.random()*1.4+0.5,
-      vy:0.0008+Math.random()*0.0014,
-      vx:(Math.random()-0.5)*0.0004,
-      rot:Math.random()*Math.PI*2,
-      vrot:(Math.random()-0.5)*0.04,
-      op:0.4+Math.random()*0.5
-    };
-  }
-
-  // D. Fireworks
+  function spawnDust(){return{x:Math.random(),y:Math.random()*-0.3,r:Math.random()*1.4+0.5,vy:0.0008+Math.random()*0.0014,vx:(Math.random()-0.5)*0.0004,rot:Math.random()*Math.PI*2,vrot:(Math.random()-0.5)*0.04,op:0.4+Math.random()*0.5};}
   const fireworks=[];
   function spawnFirework(){
     const cx=0.2+Math.random()*0.6, cy=0.15+Math.random()*0.4;
     const n=14+Math.floor(Math.random()*6);
-    const parts=[];
-    const colors=['#FEF3C0','#F5D978','#FFE070','#CCB8FF'];
-    const color=colors[Math.floor(Math.random()*colors.length)];
-    for(let i=0;i<n;i++){
-      const ang=(i/n)*Math.PI*2;
-      const sp=0.0014+Math.random()*0.0013;
-      parts.push({x:cx,y:cy,vx:Math.cos(ang)*sp,vy:Math.sin(ang)*sp,life:1,color});
-    }
+    const parts=[];const colors=[[254,243,192],[245,217,120],[255,224,112],[204,184,255]];
+    const col=colors[Math.floor(Math.random()*colors.length)];
+    for(let i=0;i<n;i++){const ang=(i/n)*Math.PI*2;const sp=0.0014+Math.random()*0.0013;parts.push({x:cx,y:cy,vx:Math.cos(ang)*sp,vy:Math.sin(ang)*sp,life:1,col});}
     fireworks.push({parts});
   }
-  let lastFw=0;
-
-  let t=0;
+  let lastFw=0;let t=0;
   (function frame(ts){
-    t+=.013;
-    const W=c.width,H=c.height;
+    t+=.013;const W=c.width,H=c.height;
     if(!W||!H){requestAnimationFrame(frame);return;}
     ctx.clearRect(0,0,W,H);
-
-    // Stars
-    for(const s of stars){
-      const op=s.base+(1-s.base)*.5*(1+Math.sin(t*s.spd+s.off));
-      const px=s.x*W,py=s.y*H;
-      ctx.globalAlpha=op;ctx.fillStyle=s.gold?'#F5D978':'#FFFFFF';
-      ctx.beginPath();ctx.arc(px,py,s.r,0,Math.PI*2);ctx.fill();
-    }
+    for(const s of stars){const op=s.base+(1-s.base)*.5*(1+Math.sin(t*s.spd+s.off));const px=s.x*W,py=s.y*H;ctx.globalAlpha=op;ctx.fillStyle=s.gold?'#F5D978':'#FFFFFF';ctx.beginPath();ctx.arc(px,py,s.r,0,Math.PI*2);ctx.fill();}
     ctx.globalAlpha=1;
-
-    // Gold dust
-    for(const d of dust){
-      d.y += d.vy; d.x += d.vx; d.rot += d.vrot;
-      if(d.y>1.05){ Object.assign(d, spawnDust()); d.y=-0.05; }
-      const px=d.x*W, py=d.y*H;
-      ctx.save();
-      ctx.translate(px,py);
-      ctx.rotate(d.rot);
-      ctx.globalAlpha=d.op;
-      const g=ctx.createRadialGradient(0,0,0,0,0,d.r*4);
-      g.addColorStop(0,'rgba(255,240,180,1)');
-      g.addColorStop(0.4,'rgba(245,217,120,0.6)');
-      g.addColorStop(1,'rgba(245,217,120,0)');
-      ctx.fillStyle=g;
-      ctx.beginPath();ctx.arc(0,0,d.r*4,0,Math.PI*2);ctx.fill();
-      ctx.fillStyle='#FFF0B0';
-      ctx.beginPath();ctx.arc(0,0,d.r*0.6,0,Math.PI*2);ctx.fill();
-      ctx.restore();
-    }
+    for(const d of dust){d.y+=d.vy;d.x+=d.vx;d.rot+=d.vrot;if(d.y>1.05){Object.assign(d,spawnDust());d.y=-0.05;}const px=d.x*W,py=d.y*H;ctx.save();ctx.translate(px,py);ctx.rotate(d.rot);ctx.globalAlpha=d.op;const g=ctx.createRadialGradient(0,0,0,0,0,d.r*4);g.addColorStop(0,'rgba(255,240,180,1)');g.addColorStop(0.4,'rgba(245,217,120,0.6)');g.addColorStop(1,'rgba(245,217,120,0)');ctx.fillStyle=g;ctx.beginPath();ctx.arc(0,0,d.r*4,0,Math.PI*2);ctx.fill();ctx.fillStyle='#FFF0B0';ctx.beginPath();ctx.arc(0,0,d.r*0.6,0,Math.PI*2);ctx.fill();ctx.restore();}
     ctx.globalAlpha=1;
-
-    // Fireworks
     if(!ts) ts=performance.now();
-    if(ts-lastFw>2000+Math.random()*2000){
-      spawnFirework();
-      lastFw=ts;
-    }
+    if(ts-lastFw>2000+Math.random()*2000){spawnFirework();lastFw=ts;}
     for(let fi=fireworks.length-1;fi>=0;fi--){
-      const fw=fireworks[fi];
-      let alive=false;
-      for(const p of fw.parts){
-        p.x += p.vx; p.y += p.vy;
-        p.vy += 0.00003;
-        p.life -= 0.012;
-        if(p.life>0){
-          alive=true;
-          const px=p.x*W, py=p.y*H;
-          ctx.save();
-          ctx.globalAlpha=Math.max(0,p.life);
+      const fw=fireworks[fi];let alive=false;
+      for(const p of fw.parts){p.x+=p.vx;p.y+=p.vy;p.vy+=0.00003;p.life-=0.012;
+        if(p.life>0){alive=true;const px=p.x*W,py=p.y*H;ctx.save();ctx.globalAlpha=Math.max(0,p.life);
           const g=ctx.createRadialGradient(px,py,0,px,py,5);
-          g.addColorStop(0,p.color);
-          g.addColorStop(0.5,p.color.replace(')',',0.6)').replace('#','rgba(').replace(/^rgba\(([A-F0-9]{6})/,(m,h)=>{const r=parseInt(h.substr(0,2),16),g=parseInt(h.substr(2,2),16),b=parseInt(h.substr(4,2),16);return `rgba(${r},${g},${b}`;}));
-          g.addColorStop(1,'rgba(245,217,120,0)');
-          ctx.fillStyle=g;
-          ctx.beginPath();ctx.arc(px,py,5,0,Math.PI*2);ctx.fill();
-          ctx.fillStyle=p.color;
-          ctx.beginPath();ctx.arc(px,py,1.4,0,Math.PI*2);ctx.fill();
-          ctx.restore();
-        }
-      }
+          g.addColorStop(0,`rgba(${p.col[0]},${p.col[1]},${p.col[2]},1)`);
+          g.addColorStop(0.5,`rgba(${p.col[0]},${p.col[1]},${p.col[2]},0.5)`);
+          g.addColorStop(1,`rgba(${p.col[0]},${p.col[1]},${p.col[2]},0)`);
+          ctx.fillStyle=g;ctx.beginPath();ctx.arc(px,py,5,0,Math.PI*2);ctx.fill();
+          ctx.fillStyle=`rgb(${p.col[0]},${p.col[1]},${p.col[2]})`;
+          ctx.beginPath();ctx.arc(px,py,1.4,0,Math.PI*2);ctx.fill();ctx.restore();}}
       if(!alive) fireworks.splice(fi,1);
     }
-
     requestAnimationFrame(frame);
   })();
 })();
@@ -595,54 +712,20 @@ function onYouTubeIframeAPIReady(){
     events:{
       onReady:e=>{playerReady=true;e.target.setVolume(70);try{e.target.playVideo();}catch(_){}},
       onStateChange:e=>{
-        if(e.data===YT.PlayerState.PLAYING){
-          isPlaying=true;
-          document.getElementById('playBtn').textContent='❚❚';
-          document.getElementById('eq').classList.add('on');
-          if(player.isMuted()){
-            document.getElementById('musicName').textContent='🔇 화면을 터치하면 소리가 켜집니다';
-          } else {
-            document.getElementById('musicName').textContent='🥂 KB국민은행 동기 30주년을 축하합니다!';
-            document.getElementById('playBtn').classList.remove('pulse');
-          }
-        } else {
-          isPlaying=false;
-          document.getElementById('playBtn').textContent='▶';
-          document.getElementById('eq').classList.remove('on');
-        }
+        if(e.data===YT.PlayerState.PLAYING){isPlaying=true;document.getElementById('playBtn').textContent='❚❚';document.getElementById('eq').classList.add('on');
+          if(player.isMuted()){document.getElementById('musicName').textContent='🔇 화면을 터치하면 소리가 켜집니다';}
+          else{document.getElementById('musicName').textContent='🥂 KB국민은행 동기 30주년을 축하합니다!';document.getElementById('playBtn').classList.remove('pulse');}}
+        else{isPlaying=false;document.getElementById('playBtn').textContent='▶';document.getElementById('eq').classList.remove('on');}
       }
     }
   });
 }
-function togglePlay(){
-  if(!player||!playerReady)return;
-  if(isPlaying){
-    if(player.isMuted()){
-      player.unMute();player.setVolume(70);
-      document.getElementById('musicName').textContent='🥂 KB국민은행 동기 30주년을 축하합니다!';
-      document.getElementById('playBtn').classList.remove('pulse');
-    } else { player.pauseVideo(); }
-  } else {
-    player.unMute();player.setVolume(70);player.playVideo();
-    document.getElementById('playBtn').classList.remove('pulse');
-  }
-}
-function firstInteraction(){
-  if(player&&playerReady&&player.isMuted()){
-    player.unMute();player.setVolume(70);
-    if(!isPlaying) player.playVideo();
-    document.getElementById('musicName').textContent='🥂 KB국민은행 동기 30주년을 축하합니다!';
-    document.getElementById('playBtn').classList.remove('pulse');
-  }
-  document.removeEventListener('click',firstInteraction);
-  document.removeEventListener('touchstart',firstInteraction);
-  document.removeEventListener('scroll',firstInteraction);
-  document.removeEventListener('keydown',firstInteraction);
-}
-document.addEventListener('click',firstInteraction);
-document.addEventListener('touchstart',firstInteraction,{passive:true});
-document.addEventListener('scroll',firstInteraction,{passive:true});
-document.addEventListener('keydown',firstInteraction);
+function togglePlay(){if(!player||!playerReady)return;
+  if(isPlaying){if(player.isMuted()){player.unMute();player.setVolume(70);document.getElementById('musicName').textContent='🥂 KB국민은행 동기 30주년을 축하합니다!';document.getElementById('playBtn').classList.remove('pulse');}else{player.pauseVideo();}}
+  else{player.unMute();player.setVolume(70);player.playVideo();document.getElementById('playBtn').classList.remove('pulse');}}
+function firstInteraction(){if(player&&playerReady&&player.isMuted()){player.unMute();player.setVolume(70);if(!isPlaying) player.playVideo();document.getElementById('musicName').textContent='🥂 KB국민은행 동기 30주년을 축하합니다!';document.getElementById('playBtn').classList.remove('pulse');}
+  document.removeEventListener('click',firstInteraction);document.removeEventListener('touchstart',firstInteraction);document.removeEventListener('scroll',firstInteraction);document.removeEventListener('keydown',firstInteraction);}
+document.addEventListener('click',firstInteraction);document.addEventListener('touchstart',firstInteraction,{passive:true});document.addEventListener('scroll',firstInteraction,{passive:true});document.addEventListener('keydown',firstInteraction);
 const s=document.createElement('script');s.src='https://www.youtube.com/iframe_api';document.head.appendChild(s);
 </script>
 </body>
