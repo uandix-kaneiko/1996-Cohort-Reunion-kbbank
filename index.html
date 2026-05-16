@@ -5,13 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@300;400;600;700;900&family=Noto+Sans+KR:wght@300;400;500;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap');
-
-:root {
-  --gold:#C9A84C;--gold-bright:#F0D080;--gold-pale:#FEF3C0;--gold-dim:#8B6914;
-  --kb-yellow:#FFBC00;
-  --bg:#07060E;--surface:rgba(16,13,26,0.96);--surface2:rgba(22,18,36,0.92);
-  --text:#F0EAD6;--text-muted:#9080A0;--border:rgba(201,168,76,0.22);--border-b:rgba(201,168,76,0.5);
-}
+:root{--gold:#C9A84C;--gold-bright:#F0D080;--gold-pale:#FEF3C0;--gold-dim:#8B6914;--kb-yellow:#FFBC00;--bg:#07060E;--surface:rgba(16,13,26,0.96);--surface2:rgba(22,18,36,0.92);--text:#F0EAD6;--text-muted:#9080A0;--border:rgba(201,168,76,0.22);--border-b:rgba(201,168,76,0.5);}
 *{margin:0;padding:0;box-sizing:border-box;}
 body{font-family:'Noto Sans KR',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden;padding-bottom:90px;}
 canvas#starfield{position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;pointer-events:none;}
@@ -19,134 +13,34 @@ canvas#starfield{position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;po
 .nb1{width:500px;height:500px;background:radial-gradient(circle,rgba(120,60,200,0.11) 0%,transparent 70%);top:-100px;right:-150px;animation:nbFloat 18s ease-in-out infinite alternate;}
 .nb2{width:400px;height:400px;background:radial-gradient(circle,rgba(201,168,76,0.07) 0%,transparent 70%);bottom:100px;left:-100px;animation:nbFloat 22s ease-in-out infinite alternate-reverse;}
 @keyframes nbFloat{from{transform:translate(0,0) scale(1)}to{transform:translate(28px,18px) scale(1.1)}}
-
-/* ══ HEADER ══ */
-.hd-root{
-  position:relative;overflow:hidden;
-  background:linear-gradient(180deg,#04030A 0%,#080612 50%,#07060E 100%);
-  margin-bottom:18px;z-index:1;
-}
+.hd-root{position:relative;overflow:hidden;background:linear-gradient(180deg,#04030A 0%,#080612 50%,#07060E 100%);margin-bottom:18px;z-index:1;}
 canvas#hd-canvas{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;}
 .hd-orb{position:absolute;border-radius:50%;pointer-events:none;z-index:1;}
 .hd-orb1{width:340px;height:340px;background:radial-gradient(circle,rgba(100,60,200,0.13) 0%,transparent 68%);top:-100px;right:-80px;animation:nbFloat 16s ease-in-out infinite alternate;}
 .hd-orb2{width:260px;height:260px;background:radial-gradient(circle,rgba(180,140,50,0.1) 0%,transparent 68%);bottom:-60px;left:-60px;animation:nbFloat 20s ease-in-out infinite alternate-reverse;}
-
-.hd-inner{
-  position:relative;z-index:2;
-  display:flex;flex-direction:column;align-items:center;
-  padding:38px 24px 40px;text-align:center;
-}
-
-/* ── KB 로고 ── */
-.kb-logo{
-  display:inline-flex;align-items:center;gap:10px;
-  margin-bottom:26px;
-  padding:8px 18px;
-  background:rgba(255,188,0,0.04);
-  border:0.5px solid rgba(255,188,0,0.2);
-  border-radius:6px;
-  backdrop-filter:blur(6px);
-}
-.kb-star-svg{
-  width:28px;height:28px;flex-shrink:0;
-  filter:drop-shadow(0 0 8px rgba(255,200,30,0.5));
-  animation:starPulse 2.4s ease-in-out infinite;
-}
-@keyframes starPulse{
-  0%,100%{filter:drop-shadow(0 0 6px rgba(255,200,30,0.4));}
-  50%{filter:drop-shadow(0 0 14px rgba(255,210,80,0.9));}
-}
+.hd-inner{position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;padding:38px 24px 40px;text-align:center;}
+.kb-logo{display:inline-flex;align-items:center;gap:10px;margin-bottom:26px;padding:8px 18px;background:rgba(255,188,0,0.04);border:0.5px solid rgba(255,188,0,0.2);border-radius:6px;backdrop-filter:blur(6px);}
+.kb-star-svg{width:28px;height:28px;flex-shrink:0;filter:drop-shadow(0 0 8px rgba(255,200,30,0.5));animation:starPulse 2.4s ease-in-out infinite;}
+@keyframes starPulse{0%,100%{filter:drop-shadow(0 0 6px rgba(255,200,30,0.4));}50%{filter:drop-shadow(0 0 14px rgba(255,210,80,0.9));}}
 .kb-text{display:flex;align-items:baseline;gap:8px;}
-.kb-en{
-  font-family:'Noto Sans KR',sans-serif;font-weight:700;
-  font-size:1.15rem;color:#FFBC00;letter-spacing:0.02em;
-  line-height:1;
-}
-.kb-kr{
-  font-family:'Noto Sans KR',sans-serif;font-weight:400;
-  font-size:0.85rem;color:rgba(240,240,240,0.85);
-  letter-spacing:0.06em;line-height:1;
-  border-left:0.5px solid rgba(255,188,0,0.4);
-  padding-left:8px;
-}
-
-/* ── 상단 룰 ── */
-.hd-toprule{
-  display:flex;align-items:center;gap:0;
-  width:min(380px,90%);margin-bottom:24px;
-}
+.kb-en{font-family:'Noto Sans KR',sans-serif;font-weight:700;font-size:1.15rem;color:#FFBC00;letter-spacing:0.02em;line-height:1;}
+.kb-kr{font-family:'Noto Sans KR',sans-serif;font-weight:400;font-size:0.85rem;color:rgba(240,240,240,0.85);letter-spacing:0.06em;line-height:1;border-left:0.5px solid rgba(255,188,0,0.4);padding-left:8px;}
+.hd-toprule{display:flex;align-items:center;gap:0;width:min(380px,90%);margin-bottom:24px;}
 .hd-rl{flex:1;height:0.5px;background:linear-gradient(90deg,transparent,rgba(201,168,76,0.7),rgba(240,208,128,1),rgba(201,168,76,0.7),transparent);}
 .hd-rc{display:flex;align-items:center;gap:6px;padding:0 12px;}
 .hd-sq{width:6px;height:6px;background:#F5D978;transform:rotate(45deg);box-shadow:0 0 8px 1px rgba(245,217,120,0.6);}
 .hd-ds{width:2.5px;height:2.5px;background:rgba(201,168,76,0.6);border-radius:50%;}
-
-/* ── 메달리온 ── */
-.medallion{
-  position:relative;width:120px;height:120px;
-  margin-bottom:22px;
-  animation:medalGlow 3.5s ease-in-out infinite;
-}
-@keyframes medalGlow{
-  0%,100%{filter:drop-shadow(0 0 10px rgba(201,168,76,0.5)) drop-shadow(0 0 30px rgba(201,168,76,0.15));}
-  50%{filter:drop-shadow(0 0 20px rgba(245,217,120,0.85)) drop-shadow(0 0 60px rgba(201,168,76,0.3));}
-}
+.medallion{position:relative;width:120px;height:120px;margin-bottom:22px;animation:medalGlow 3.5s ease-in-out infinite;}
+@keyframes medalGlow{0%,100%{filter:drop-shadow(0 0 10px rgba(201,168,76,0.5)) drop-shadow(0 0 30px rgba(201,168,76,0.15));}50%{filter:drop-shadow(0 0 20px rgba(245,217,120,0.85)) drop-shadow(0 0 60px rgba(201,168,76,0.3));}}
 .medal-svg{width:120px;height:120px;}
-
-/* "30" 메달리온 안 */
-.medal-num-overlay{
-  position:absolute;inset:0;
-  display:flex;align-items:center;justify-content:center;
-  flex-direction:column;
-  pointer-events:none;
-}
-.medal-num{
-  font-family:'Cormorant Garamond',serif;font-weight:300;
-  font-size:2.6rem;line-height:1;letter-spacing:-0.04em;
-  background:linear-gradient(160deg,#FEF3C0 0%,#F5D978 30%,#C9920A 60%,#F5D978 90%);
-  background-size:200% 200%;
-  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
-  animation:shimmer 5s ease-in-out infinite;
-  margin-top:-3px;
-}
+.medal-num-overlay{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;flex-direction:column;pointer-events:none;}
+.medal-num{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:2.6rem;line-height:1;letter-spacing:-0.04em;background:linear-gradient(160deg,#FEF3C0 0%,#F5D978 30%,#C9920A 60%,#F5D978 90%);background-size:200% 200%;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:shimmer 5s ease-in-out infinite;margin-top:-3px;}
 @keyframes shimmer{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
-.medal-num-sub{
-  font-family:'Cormorant Garamond',serif;font-weight:400;font-style:italic;
-  font-size:0.62rem;color:rgba(240,210,120,0.65);
-  letter-spacing:0.18em;margin-top:-2px;
-}
-
-/* ── 연도 캡션 ── */
-.hd-years{
-  display:flex;align-items:center;gap:10px;
-  font-family:'Cormorant Garamond',serif;
-  font-size:0.78rem;font-weight:300;
-  color:rgba(201,168,76,0.7);
-  letter-spacing:0.3em;
-  margin-bottom:14px;
-}
+.medal-num-sub{font-family:'Cormorant Garamond',serif;font-weight:400;font-style:italic;font-size:0.62rem;color:rgba(240,210,120,0.65);letter-spacing:0.18em;margin-top:-2px;}
+.hd-years{display:flex;align-items:center;gap:10px;font-family:'Cormorant Garamond',serif;font-size:0.78rem;font-weight:300;color:rgba(201,168,76,0.7);letter-spacing:0.3em;margin-bottom:14px;}
 .hd-yr-dot{width:3px;height:3px;background:rgba(201,168,76,0.6);border-radius:50%;}
-
-/* ── 메인 타이틀 ── */
-.hd-title{
-  font-family:'Noto Serif KR',serif;font-weight:900;
-  font-size:clamp(1.85rem,6.2vw,2.55rem);
-  white-space:nowrap;letter-spacing:0.04em;
-  margin-bottom:6px;
-  background:linear-gradient(160deg,#FEF3C0 0%,#F5D978 25%,#D4A93A 50%,#F5D978 72%,#FEF3C0 88%,#C9920A 100%);
-  background-size:200% 200%;
-  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
-  animation:shimmer 5s ease-in-out infinite;
-}
-
-/* ── 영문 서브 ── */
-.hd-sub{
-  font-family:'Cormorant Garamond',serif;font-size:0.95rem;
-  font-weight:300;font-style:italic;
-  color:rgba(240,210,120,0.5);letter-spacing:0.18em;
-  margin-bottom:26px;
-}
-
-/* ── 하단 룰 ── */
+.hd-title{font-family:'Noto Serif KR',serif;font-weight:900;font-size:clamp(1.85rem,6.2vw,2.55rem);white-space:nowrap;letter-spacing:0.04em;margin-bottom:6px;background:linear-gradient(160deg,#FEF3C0 0%,#F5D978 25%,#D4A93A 50%,#F5D978 72%,#FEF3C0 88%,#C9920A 100%);background-size:200% 200%;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:shimmer 5s ease-in-out infinite;}
+.hd-sub{font-family:'Cormorant Garamond',serif;font-size:0.95rem;font-weight:300;font-style:italic;color:rgba(240,210,120,0.5);letter-spacing:0.18em;margin-bottom:26px;}
 .hd-botrule{display:flex;align-items:center;gap:10px;width:min(340px,88%);}
 .hd-bl{flex:1;height:0.5px;background:linear-gradient(90deg,transparent,rgba(201,168,76,0.6));}
 .hd-bl.r{background:linear-gradient(90deg,rgba(201,168,76,0.6),transparent);}
@@ -154,8 +48,6 @@ canvas#hd-canvas{position:absolute;inset:0;width:100%;height:100%;pointer-events
 .hd-bm-sq{width:5px;height:5px;background:rgba(201,168,76,0.7);transform:rotate(45deg);}
 .hd-bm-ds{width:2.5px;height:2.5px;background:rgba(201,168,76,0.4);border-radius:50%;}
 .hd-bm-line{width:22px;height:0.5px;background:rgba(201,168,76,0.5);}
-
-/* ══ CONTENT ══ */
 .container{max-width:560px;margin:0 auto;padding:0 16px 40px;position:relative;z-index:1;}
 .card{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:18px 20px;margin-bottom:14px;position:relative;overflow:hidden;backdrop-filter:blur(12px);animation:riseIn 0.7s cubic-bezier(.22,.68,0,1.2) both;}
 .card::before{content:'';position:absolute;inset:0;border-radius:16px;background:linear-gradient(135deg,rgba(240,208,128,0.05) 0%,transparent 60%);pointer-events:none;}
@@ -196,8 +88,10 @@ td:first-child{font-weight:700;color:var(--gold);font-family:'Noto Serif KR',ser
 .other-list li::before{content:'–  ';color:var(--gold-dim)}
 .music-bar{position:fixed;bottom:0;left:0;right:0;z-index:100;padding:0 16px;}
 .music-inner{max-width:560px;margin:0 auto;background:rgba(8,6,18,0.97);border:1px solid var(--border-b);border-bottom:none;border-radius:16px 16px 0 0;padding:12px 18px;display:flex;align-items:center;gap:14px;backdrop-filter:blur(20px);box-shadow:0 -4px 40px rgba(0,0,0,0.65),inset 0 -1px 0 rgba(201,168,76,0.12);}
-.play-btn{width:42px;height:42px;border-radius:50%;background:linear-gradient(135deg,var(--gold-bright),var(--gold),var(--gold-dim));border:none;outline:none;display:flex;align-items:center;justify-content:center;font-size:0.95rem;cursor:pointer;color:#06050A;font-weight:900;flex-shrink:0;transition:transform .2s,box-shadow .2s;box-shadow:0 0 20px rgba(201,168,76,0.5);}
+.play-btn{width:42px;height:42px;border-radius:50%;background:linear-gradient(135deg,var(--gold-bright),var(--gold),var(--gold-dim));border:none;outline:none;display:flex;align-items:center;justify-content:center;font-size:0.95rem;cursor:pointer;color:#06050A;font-weight:900;flex-shrink:0;transition:transform .2s,box-shadow .2s;box-shadow:0 0 20px rgba(201,168,76,0.5);position:relative;}
 .play-btn:hover{transform:scale(1.08);box-shadow:0 0 30px rgba(201,168,76,0.75)}.play-btn:active{transform:scale(0.95)}
+.play-btn.pulse::after{content:'';position:absolute;inset:-4px;border-radius:50%;border:2px solid rgba(245,217,120,0.7);animation:btnPulse 1.5s ease-out infinite;}
+@keyframes btnPulse{0%{transform:scale(1);opacity:1}100%{transform:scale(1.4);opacity:0}}
 .music-info{flex:1;min-width:0}
 .music-label{font-size:0.7rem;color:var(--gold);font-weight:700;letter-spacing:0.06em;text-transform:uppercase;margin-bottom:2px}
 .music-name{font-size:0.8rem;color:var(--text);font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
@@ -216,38 +110,28 @@ td:first-child{font-weight:700;color:var(--gold);font-family:'Noto Serif KR',ser
 <div class="nebula nb2"></div>
 <div id="yt-player"></div>
 
-<!-- ══ HEADER ══ -->
 <div class="hd-root">
   <div class="hd-orb hd-orb1"></div>
   <div class="hd-orb hd-orb2"></div>
   <canvas id="hd-canvas"></canvas>
-
   <div class="hd-inner">
-
-    <!-- KB 국민은행 로고 -->
     <div class="kb-logo">
       <svg class="kb-star-svg" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
         <defs>
           <radialGradient id="kbStar" cx="50%" cy="50%" r="50%">
-            <stop offset="0%" stop-color="#FFE070"/>
-            <stop offset="60%" stop-color="#FFBC00"/>
-            <stop offset="100%" stop-color="#E0A000"/>
+            <stop offset="0%" stop-color="#FFE070"/><stop offset="60%" stop-color="#FFBC00"/><stop offset="100%" stop-color="#E0A000"/>
           </radialGradient>
         </defs>
-        <!-- KB 별 모양 (12포인트 스파클) -->
         <g fill="url(#kbStar)">
-          <!-- 큰 4방향 -->
           <path d="M16 1 L17.5 14.5 L16 16 L14.5 14.5 Z"/>
           <path d="M16 31 L17.5 17.5 L16 16 L14.5 17.5 Z"/>
           <path d="M1 16 L14.5 17.5 L16 16 L14.5 14.5 Z"/>
           <path d="M31 16 L17.5 14.5 L16 16 L17.5 17.5 Z"/>
-          <!-- 대각선 4방향 (좀 작게) -->
           <path d="M5.5 5.5 L13.5 13.5 L16 16 L14 13 Z" opacity="0.85"/>
           <path d="M26.5 26.5 L18.5 18.5 L16 16 L18 19 Z" opacity="0.85"/>
           <path d="M26.5 5.5 L18.5 13.5 L16 16 L19 14 Z" opacity="0.85"/>
           <path d="M5.5 26.5 L13.5 18.5 L16 16 L13 18 Z" opacity="0.85"/>
         </g>
-        <!-- 중앙 빛 -->
         <circle cx="16" cy="16" r="1.6" fill="#FFF7D0"/>
       </svg>
       <div class="kb-text">
@@ -256,35 +140,28 @@ td:first-child{font-weight:700;color:var(--gold);font-family:'Noto Serif KR',ser
       </div>
     </div>
 
-    <!-- 상단 룰 -->
     <div class="hd-toprule">
       <div class="hd-rl"></div>
       <div class="hd-rc"><div class="hd-ds"></div><div class="hd-sq"></div><div class="hd-ds"></div></div>
       <div class="hd-rl"></div>
     </div>
 
-    <!-- 메달리온 (안에 "30" 포함) -->
     <div class="medallion">
       <svg class="medal-svg" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
         <defs>
           <linearGradient id="mg1" x1="0" y1="0" x2="120" y2="120" gradientUnits="userSpaceOnUse">
-            <stop offset="0%" stop-color="#FEF3C0"/>
-            <stop offset="30%" stop-color="#F5D978"/>
-            <stop offset="60%" stop-color="#B8860B"/>
-            <stop offset="100%" stop-color="#F5D978"/>
+            <stop offset="0%" stop-color="#FEF3C0"/><stop offset="30%" stop-color="#F5D978"/><stop offset="60%" stop-color="#B8860B"/><stop offset="100%" stop-color="#F5D978"/>
           </linearGradient>
         </defs>
         <circle cx="60" cy="60" r="56" stroke="url(#mg1)" stroke-width="0.8" fill="none" opacity="0.7"/>
         <circle cx="60" cy="60" r="49" stroke="url(#mg1)" stroke-width="0.4" fill="none" opacity="0.35"/>
         <circle cx="60" cy="60" r="42" stroke="url(#mg1)" stroke-width="0.6" fill="none" opacity="0.5"/>
-        <!-- 8방향 다이아몬드 -->
         <g fill="url(#mg1)" opacity="0.85">
           <rect x="57.5" y="6" width="5" height="5" transform="rotate(45 60 8.5)"/>
           <rect x="57.5" y="108.5" width="5" height="5" transform="rotate(45 60 111)"/>
           <rect x="6" y="57.5" width="5" height="5" transform="rotate(45 8.5 60)"/>
           <rect x="108.5" y="57.5" width="5" height="5" transform="rotate(45 111 60)"/>
         </g>
-        <!-- 8방향 선장식 (대각선) -->
         <g opacity="0.4" stroke="url(#mg1)" stroke-width="0.8">
           <line x1="60" y1="14" x2="60" y2="24"/>
           <line x1="60" y1="96" x2="60" y2="106"/>
@@ -295,45 +172,31 @@ td:first-child{font-weight:700;color:var(--gold);font-family:'Noto Serif KR',ser
           <line x1="93" y1="27" x2="86" y2="34"/>
           <line x1="34" y1="86" x2="27" y2="93"/>
         </g>
-        <!-- 30 가운데 박스 (텍스트 영역) -->
         <circle cx="60" cy="60" r="28" stroke="url(#mg1)" stroke-width="0.5" fill="none" opacity="0.5" stroke-dasharray="2,3"/>
       </svg>
-      <!-- 메달 위에 "30" 띄우기 -->
       <div class="medal-num-overlay">
         <span class="medal-num">30</span>
         <span class="medal-num-sub">YEARS</span>
       </div>
     </div>
 
-    <!-- 연도 -->
     <div class="hd-years">
-      <span>1996</span>
-      <div class="hd-yr-dot"></div>
-      <div class="hd-yr-dot"></div>
-      <span>2026</span>
+      <span>1996</span><div class="hd-yr-dot"></div><div class="hd-yr-dot"></div><span>2026</span>
     </div>
 
-    <!-- 메인 타이틀 -->
     <div class="hd-title">동기 30주년 행사</div>
     <div class="hd-sub">Colleagues · Memories · Celebration</div>
 
-    <!-- 하단 룰 -->
     <div class="hd-botrule">
       <div class="hd-bl"></div>
       <div class="hd-bm">
-        <div class="hd-bm-ds"></div>
-        <div class="hd-bm-line"></div>
-        <div class="hd-bm-sq"></div>
-        <div class="hd-bm-line"></div>
-        <div class="hd-bm-ds"></div>
+        <div class="hd-bm-ds"></div><div class="hd-bm-line"></div><div class="hd-bm-sq"></div><div class="hd-bm-line"></div><div class="hd-bm-ds"></div>
       </div>
       <div class="hd-bl r"></div>
     </div>
-
   </div>
 </div>
 
-<!-- ══ CONTENT ══ -->
 <div class="container">
   <div class="card">
     <div class="icon-row">
@@ -341,13 +204,9 @@ td:first-child{font-weight:700;color:var(--gold);font-family:'Noto Serif KR',ser
       <div class="date-text">2026년 6월 19일(금) 18시 ~ 20일(토) 11시</div>
     </div>
   </div>
-
   <div class="card">
     <div class="sec-label">참석동기(32명) 및 방배정(8개 호실)</div>
-    <div class="room-note">
-      · Two room 예약자(5개 호실) : 박영근, 권주희, 장연화, 변경숙, 남순애<br>
-      · One room 예약자(3개 호실) : 이은선, 이미진, 홍순옥
-    </div>
+    <div class="room-note">· Two room 예약자(5개 호실) : 박영근, 권주희, 장연화, 변경숙, 남순애<br>· One room 예약자(3개 호실) : 이은선, 이미진, 홍순옥</div>
     <table>
       <thead><tr><th>구분</th><th colspan="5">방 배정 인원</th></tr></thead>
       <tbody>
@@ -362,7 +221,6 @@ td:first-child{font-weight:700;color:var(--gold);font-family:'Noto Serif KR',ser
       </tbody>
     </table>
   </div>
-
   <div class="card">
     <div class="sec-label">일 &nbsp; 정</div>
     <div>
@@ -416,7 +274,6 @@ td:first-child{font-weight:700;color:var(--gold);font-family:'Noto Serif KR',ser
       </div>
     </div>
   </div>
-
   <div class="card">
     <div class="other-inner">
       <div class="star-badge">⭐</div>
@@ -433,10 +290,10 @@ td:first-child{font-weight:700;color:var(--gold);font-family:'Noto Serif KR',ser
 
 <div class="music-bar">
   <div class="music-inner">
-    <button class="play-btn" id="playBtn" onclick="togglePlay()">▶</button>
+    <button class="play-btn pulse" id="playBtn" onclick="togglePlay()">▶</button>
     <div class="music-info">
-      <div class="music-label">🎵 배경음악</div>
-      <div class="music-name" id="musicName">재생 버튼을 눌러 시작하세요</div>
+      <div class="music-label">🎵 배경음악 · 자동재생</div>
+      <div class="music-name" id="musicName">화면을 한 번 터치하면 음악이 시작됩니다</div>
     </div>
     <div class="eq" id="eq">
       <div class="eq-b" style="--d:.45s;--h:18px"></div>
@@ -498,21 +355,86 @@ td:first-child{font-weight:700;color:var(--gold);font-family:'Noto Serif KR',ser
     requestAnimationFrame(frame);
   })();
 })();
-let player=null,isPlaying=false;
+
+/* ─── 자동재생 ─── */
+let player=null,isPlaying=false,playerReady=false,hasTriedAutoplay=false;
+
 function onYouTubeIframeAPIReady(){
   player=new YT.Player('yt-player',{
     videoId:'eGC5_DHWPh8',
-    playerVars:{autoplay:0,controls:0,loop:1,playlist:'eGC5_DHWPh8',rel:0,fs:0},
+    playerVars:{
+      autoplay:1, mute:1,           // 음소거 자동재생 (브라우저 정책 우회)
+      controls:0, loop:1, playlist:'eGC5_DHWPh8',
+      rel:0, fs:0, playsinline:1
+    },
     events:{
-      onReady:e=>{e.target.setVolume(70);document.getElementById('musicName').textContent='▶ 버튼을 눌러 음악을 시작하세요';},
+      onReady:e=>{
+        playerReady=true;
+        e.target.setVolume(70);
+        // 음소거 상태로 자동재생 시도
+        try { e.target.playVideo(); } catch(_) {}
+      },
       onStateChange:e=>{
-        if(e.data===YT.PlayerState.PLAYING){isPlaying=true;document.getElementById('playBtn').textContent='❚❚';document.getElementById('eq').classList.add('on');document.getElementById('musicName').textContent='🥂 KB국민은행 동기 30주년을 축하합니다!';}
-        else{isPlaying=false;document.getElementById('playBtn').textContent='▶';document.getElementById('eq').classList.remove('on');}
+        if(e.data===YT.PlayerState.PLAYING){
+          isPlaying=true;
+          document.getElementById('playBtn').textContent='❚❚';
+          document.getElementById('eq').classList.add('on');
+          // 음소거 상태인지 확인
+          if(player.isMuted()){
+            document.getElementById('musicName').textContent='🔇 화면을 터치하면 소리가 켜집니다';
+          } else {
+            document.getElementById('musicName').textContent='🥂 KB국민은행 동기 30주년을 축하합니다!';
+            document.getElementById('playBtn').classList.remove('pulse');
+          }
+        } else {
+          isPlaying=false;
+          document.getElementById('playBtn').textContent='▶';
+          document.getElementById('eq').classList.remove('on');
+        }
       }
     }
   });
 }
-function togglePlay(){if(!player)return;isPlaying?player.pauseVideo():player.playVideo();}
+
+function togglePlay(){
+  if(!player||!playerReady) return;
+  if(isPlaying){
+    if(player.isMuted()){
+      // 음소거 해제
+      player.unMute();
+      player.setVolume(70);
+      document.getElementById('musicName').textContent='🥂 KB국민은행 동기 30주년을 축하합니다!';
+      document.getElementById('playBtn').classList.remove('pulse');
+    } else {
+      player.pauseVideo();
+    }
+  } else {
+    player.unMute();
+    player.setVolume(70);
+    player.playVideo();
+    document.getElementById('playBtn').classList.remove('pulse');
+  }
+}
+
+// 첫 사용자 인터랙션 시 음소거 해제
+function firstInteraction(){
+  if(player&&playerReady&&player.isMuted()){
+    player.unMute();
+    player.setVolume(70);
+    if(!isPlaying) player.playVideo();
+    document.getElementById('musicName').textContent='🥂 KB국민은행 동기 30주년을 축하합니다!';
+    document.getElementById('playBtn').classList.remove('pulse');
+  }
+  document.removeEventListener('click',firstInteraction);
+  document.removeEventListener('touchstart',firstInteraction);
+  document.removeEventListener('scroll',firstInteraction);
+  document.removeEventListener('keydown',firstInteraction);
+}
+document.addEventListener('click',firstInteraction);
+document.addEventListener('touchstart',firstInteraction,{passive:true});
+document.addEventListener('scroll',firstInteraction,{passive:true});
+document.addEventListener('keydown',firstInteraction);
+
 const s=document.createElement('script');s.src='https://www.youtube.com/iframe_api';document.head.appendChild(s);
 </script>
 </body>
